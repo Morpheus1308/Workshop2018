@@ -19,24 +19,42 @@ public class WorkshopCode {
 
         //Testing building 2
         Building building2 = new Building("Josef", "Stalin Street");
-        Thermometer dank2 = new Thermometer("Thermometer1");
-        AirQualitySensor memes2 = new AirQualitySensor("AirQualitySensor1");
-        Actuator actuator1 = new Actuator("VentSystem", 0);
-        building2.addSensor(dank2);
-        building2.addSensor(memes2);
+        Thermometer thermometer = new Thermometer("Thermometer1");
+        AirQualitySensor AQS = new AirQualitySensor("AirQualitySensor1");
+        Actuator actuator1 = new Actuator("coldAir", 0);
+        Actuator actuator2 = new Actuator("hotAir", 0);
+        building2.addSensor(thermometer);
+        building2.addSensor(AQS);
         building2.addActuator(actuator1);
+        building2.addActuator(actuator2);
         yeet.addBuilding(building2);
 
         //Printing the combined toString
         System.out.println(yeet.toString());
 
         //Further testing
-        while (true) {
+        for (int i = 0; i < 3; i++) {
             //Infinite loop determines changing 
-            actuator1.getPosition();
-
             
+            if (thermometer.getReadOut() > 50) {
+                if (AQS.getReadout() > 40) {
+                    actuator1.setPosition(100);
+                    actuator2.setPosition(0);
+                } else {
+                    actuator1.setPosition(50);
+                }
+            } else if (thermometer.getReadOut() < 15) {
+                actuator1.setPosition(10);
+                actuator2.setPosition(80);
+            }
             
+            System.out.println(actuator1.getPosition());
+            System.out.println(actuator2.getPosition());
+            
+            thermometer.setValue(Math.random()*100);
+            System.out.println(thermometer.getReadOut());
+            AQS.setValue(Math.random()*100);
+            System.out.println(AQS.getReadout());
         }
 
     }
