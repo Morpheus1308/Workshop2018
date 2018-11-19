@@ -37,8 +37,11 @@ public class Building {
         return actuatorList.add(a);
     }
     
-    public void removeSensor(UUID uuid) {
-        
+    public boolean removeSensor(UUID uuid) {
+        for (Sensor s : sensorList) {
+            
+        }
+        return false;
     }
     
     
