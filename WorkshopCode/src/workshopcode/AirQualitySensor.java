@@ -16,6 +16,10 @@ public class AirQualitySensor extends Sensor{
     public double getReadout(){
         return Math.random()*10;
     }
+    
+    public String toString(){
+        return name + " " + super.getId();
+    }
             
 
 }

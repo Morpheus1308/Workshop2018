@@ -18,4 +18,8 @@ public class Thermometer extends Sensor {
     public double getReadOut(){
         return Math.random()*100;
     }
+    
+    public String toString(){
+        return name  + " " + super.getId();
+    }
 }
