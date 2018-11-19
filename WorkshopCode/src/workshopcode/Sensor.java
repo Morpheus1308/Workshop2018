@@ -49,7 +49,6 @@ public class Sensor {
     /**
      * @return the desciption
      */
-    }
     
     @Override
     public String toString(){
