@@ -10,7 +10,7 @@ import java.util.UUID;
 public class Sensor {
     private double value;
     private String name;
-    UUID id;
+    private UUID id;
     
     public Sensor(){
         
@@ -53,6 +53,13 @@ public class Sensor {
     @Override
     public String toString(){
         return name;
+    }
+
+    /**
+     * @return the id
+     */
+    public UUID getId() {
+        return id;
     }
     
     
