@@ -39,11 +39,35 @@ public class Building {
     
     public boolean removeSensor(UUID uuid) {
         for (Sensor s : sensorList) {
-            
+            if (s.getId() == uuid) {
+                return sensorList.remove(s);
+            }
         }
         return false;
     }
     
+    public boolean removeActuator(UUID uuid) {
+        for (Actuator a : actuatorList) {
+            if (a.getId() == uuid) {
+                return actuatorList.remove(a);
+            }
+        }
+        return false;
+    }
+    
+    @Override
+    public String toString() {
+        String combinedString = name + " " + address + " " + uuid + "\nThe above building contains: ";
+        for (Sensor s : sensorList) {
+            combinedString += "\n" + s.toString();
+        }
+        for (Actuator a : actuatorList) {
+            combinedString += "\n" + a.toString();
+        }
+        
+        combinedString += "\n ----------------";
+        return combinedString;
+    }
     
     //Getters and setters
     public String getName() {
