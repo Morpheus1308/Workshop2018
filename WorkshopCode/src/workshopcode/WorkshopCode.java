@@ -2,18 +2,25 @@
  *
  * @author bende
  */
-
 package workshopcode;
 
-
 public class WorkshopCode {
-    private Buildings buildings;
+
     public static void main(String[] args) {
+
+        Buildings yeet = new Buildings();
+        Building building = new Building("Heil", "Hitler Avenue");
+        Thermometer dank = new Thermometer("Termometer");
+        AirQualitySensor memes = new AirQualitySensor("yeet");
+        building.addSensor(dank);
+        building.addSensor(memes);
         
-        //buildings = new Buildings();
+        
+        yeet.addBuilding(building);
+        
+        System.out.println(yeet.toString());
         
     }
 
-    
-    
 }
+
