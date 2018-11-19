@@ -25,7 +25,7 @@ public class Buildings {
         String combinedString = "";
         
         for (Building b : buildingList) {
-           combinedString += b.toString();
+           combinedString += "\n" + b.toString();
         }
         
         return combinedString;
