@@ -9,9 +9,10 @@ public class Thermometer extends Sensor {
     
     private String name;
     
-    
-    public Thermometer(){
+    public Thermometer(String name){
         super();
+        this.name = name;
+        
     }
     
     public double getReadOut(){

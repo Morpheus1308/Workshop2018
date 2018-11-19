@@ -13,7 +13,7 @@ public class Sensor {
     private UUID id;
     
     public Sensor(){
-        
+        id = UUID.randomUUID();
     }
     
     
