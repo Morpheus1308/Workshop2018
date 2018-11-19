@@ -29,7 +29,7 @@ public class Actuator {
     
     @Override
     public String toString(){
-        return getName() + getId();
+        return String.format("Actuator name:\t %s with the id: %s", getName(), getId());
     }
 
     /**
@@ -66,4 +66,5 @@ public class Actuator {
     public double getPosition() {
         return position;
     }
+    
 }
