@@ -57,12 +57,14 @@ public class Building {
     
     @Override
     public String toString() {
-        String combinedString = name + " " + address + " " + uuid + "\nThe above building contains: ";
+        String combinedString = name + ", " + address + ", " + " UUID:  " + uuid +  "\n \nThe above building contains: ";
         for (Sensor s : sensorList) {
             combinedString += "\n" + s.toString();
+            combinedString += "\n      " + "value: \t " + s.getReadout();
         }
         for (Actuator a : actuatorList) {
             combinedString += "\n" + a.toString();
+            combinedString += "\n" + "currentposition: " + a.getCurrentPos();
         }
         
         combinedString += "\n ----------------";
