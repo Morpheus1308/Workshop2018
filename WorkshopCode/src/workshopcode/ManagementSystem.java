@@ -5,6 +5,7 @@
  */
 package workshopcode;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import workshopcode.Interface.IBuildingManagementSystem;
@@ -15,44 +16,89 @@ import workshopcode.Interface.IBuildingManagementSystem;
  */
 public class ManagementSystem implements IBuildingManagementSystem {
 
+    Buildings buildings = new Buildings();
+
     @Override
     public Map<UUID, String> getBuildingInformation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Map<UUID, String> buildingInformation = new HashMap<>();
+        for (Building building : buildings.getBuildings()) {
+            buildingInformation.put(building.getUuid(), building.toString());
+        }
+        return buildingInformation;
     }
 
     @Override
     public Map<UUID, String> getSensorInformation(UUID buildingId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Building tempBuilding;
+        Map<UUID, String> sensorInformation = new HashMap<>();
+        for (Building building : buildings.getBuildings()) {
+            if (building.getUuid() == buildingId) {
+                tempBuilding = building;
+                for (Sensor sensor : tempBuilding.sensorList) {
+                    sensorInformation.put(sensor.getId(), sensor.toString());
+                }
+            }
+
+        }
+        return sensorInformation;
     }
 
     @Override
     public Map<UUID, String> getActuatorInformation(UUID buildingId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Building tempBuilding;
+        Map<UUID, String> actuatorInformation = new HashMap<>();
+        for (Building building : buildings.getBuildings()) {
+            if (building.getUuid() == buildingId) {
+                tempBuilding = building;
+                for (Actuator actuator : tempBuilding.actuatorList) {
+                    actuatorInformation.put(actuator.getId(), actuator.toString());
+                }
+            }
+
+        }
+        return actuatorInformation;
     }
 
     @Override
     public UUID addTemperatureSensor(UUID buildingId, String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Building building : buildings.getBuildings()) {
+            if(building.getUuid() == buildingId){
+                building.addSensor(new Thermometer(name));
+            }
+        }
+
     }
 
     @Override
     public UUID addCo2Sensor(UUID buildingId, String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        UUID id = UUID.randomUUID();
+        for (Building building : buildings.getBuildings()) {
+            if(building.getUuid() == buildingId){
+                building.addSensor(new AirQualitySensor(name));
+                id = 
+            }
+        }
+        return id
     }
 
     @Override
     public void removeSensor(UUID buildingId, UUID sensorId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Building building : buildings.getBuildings()) {
+            if(building.getUuid() == buildingId){
+                building.removeSensor(sensorId);
+            }
+        }
+
     }
 
     @Override
-    public UUID addVentilationActuator(UUID buildingId, String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public UUID addActuator(UUID buildingId, String name) {
+        
     }
 
     @Override
     public void removeActuator(UUID buildingId, UUID actuatorId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

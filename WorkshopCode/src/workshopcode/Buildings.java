@@ -49,18 +49,25 @@ public class Buildings {
         return sb.toString();
     }
 
-    public String printSensor(UUID id) {
+    public ArrayList<String> printSensor(UUID id) {
         StringBuilder sb = new StringBuilder();
+        ArrayList<String> sensorStrings = new ArrayList<>();
         Building tempBuilding;
+                
         for (Building building : buildingList) {
             if (building.getUuid() == id) {
                 tempBuilding = building;
                 for (Sensor sensor : tempBuilding.sensorList) {
-                    sb.append(sensor + "\n");
+                    sensorStrings.add(sensor.toString());
                 }
             }
         }
 
-        return sb.toString();
+        return sensorStrings;
     }
+    
+    public ArrayList<Building> getBuildings(){
+        return buildingList;
+    }
+    
 }
