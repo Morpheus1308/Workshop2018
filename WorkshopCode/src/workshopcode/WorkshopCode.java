@@ -9,13 +9,13 @@ public class WorkshopCode {
     public static void main(String[] args) {
 
         //Testing building 1 
-        Buildings yeet = new Buildings();
+        Buildings all = new Buildings();
         Building building = new Building("Heil", "Hitler Avenue");
         Thermometer dank = new Thermometer("Termometer");
         AirQualitySensor memes = new AirQualitySensor("QualitySensor");
         building.addSensor(dank);
         building.addSensor(memes);
-        yeet.addBuilding(building);
+        all.addBuilding(building);
 
         //Testing building 2
         Building building2 = new Building("Josef", "Stalin Street");
@@ -27,10 +27,10 @@ public class WorkshopCode {
         building2.addSensor(AQS);
         building2.addActuator(actuator1);
         building2.addActuator(actuator2);
-        yeet.addBuilding(building2);
+        all.addBuilding(building2);
 
         //Printing the combined toString
-        System.out.println(yeet.toString());
+        System.out.println(all.toString());
 
         //Further testing
         for (int i = 0; i < 3; i++) {
