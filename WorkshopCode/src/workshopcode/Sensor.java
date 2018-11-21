@@ -52,7 +52,7 @@ public class Sensor {
     
     @Override
     public String toString(){
-        return name;
+        return String.format("Sensor name:\t %s with the id: %s", name, getId());
     }
 
     /**
