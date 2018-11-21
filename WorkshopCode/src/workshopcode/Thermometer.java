@@ -20,6 +20,6 @@ public class Thermometer extends Sensor {
     }
     
     public String toString(){
-        return name  + " " + super.getId();
+        return String.format("Sensor name:\t %s with the id: %s", name, getId());
     }
 }

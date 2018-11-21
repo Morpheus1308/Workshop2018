@@ -41,7 +41,7 @@ public class Buildings {
             if (building.getUuid() == id) {
                 tempBuilding = building;
                 for (Actuator actuator : tempBuilding.actuatorList) {
-                    sb.append(actuator + "/n");
+                    sb.append(actuator + "\n");
                 }
             }
         }
@@ -56,7 +56,7 @@ public class Buildings {
             if (building.getUuid() == id) {
                 tempBuilding = building;
                 for (Sensor sensor : tempBuilding.sensorList) {
-                    sb.append(sensor + "/n");
+                    sb.append(sensor + "\n");
                 }
             }
         }

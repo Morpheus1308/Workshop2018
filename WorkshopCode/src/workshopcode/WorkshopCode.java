@@ -52,6 +52,9 @@ public class WorkshopCode {
             System.out.println(actuator2.getPosition());
             
             thermometer.setValue(Math.random()*100);
+            System.out.println(yeet.printActuator(building2.getUuid()));
+            System.out.println(yeet.printSensor(building2.getUuid()));
+            
             System.out.println(thermometer.getReadOut());
             AQS.setValue(Math.random()*100);
             System.out.println(AQS.getReadout());
