@@ -8,13 +8,13 @@ package workshopcode;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import workshopcode.Interface.IBuildingManagementSystem;
+import workshopcode.Interface.IBuildingManagementInterfaceExpansion;
 
 /**
  *
  * @author Ryge
  */
-public class ManagementSystem implements IBuildingManagementSystem {
+public class ManagementSystem implements IBuildingManagementInterfaceExpansion {
 
     Buildings buildings = new Buildings();
 
@@ -61,11 +61,15 @@ public class ManagementSystem implements IBuildingManagementSystem {
 
     @Override
     public UUID addTemperatureSensor(UUID buildingId, String name) {
+        UUID id = UUID.randomUUID();
         for (Building building : buildings.getBuildings()) {
-            if(building.getUuid() == buildingId){
-                building.addSensor(new Thermometer(name));
+            if (building.getUuid() == buildingId) {
+                Thermometer thermometer = new Thermometer(name);
+                building.addSensor(thermometer);
+                id = thermometer.getId();
             }
         }
+        return id;
 
     }
 
@@ -73,18 +77,19 @@ public class ManagementSystem implements IBuildingManagementSystem {
     public UUID addCo2Sensor(UUID buildingId, String name) {
         UUID id = UUID.randomUUID();
         for (Building building : buildings.getBuildings()) {
-            if(building.getUuid() == buildingId){
-                building.addSensor(new AirQualitySensor(name));
-                id = 
+            if (building.getUuid() == buildingId) {
+                AirQualitySensor airQualitySensor = new AirQualitySensor(name);
+                building.addSensor(airQualitySensor);
+                id = airQualitySensor.getId();
             }
         }
-        return id
+        return id;
     }
 
     @Override
     public void removeSensor(UUID buildingId, UUID sensorId) {
         for (Building building : buildings.getBuildings()) {
-            if(building.getUuid() == buildingId){
+            if (building.getUuid() == buildingId) {
                 building.removeSensor(sensorId);
             }
         }
@@ -92,13 +97,35 @@ public class ManagementSystem implements IBuildingManagementSystem {
     }
 
     @Override
-    public UUID addActuator(UUID buildingId, String name) {
-        
+    public UUID addVentilationActuator(UUID buildingId, String name) {
+        UUID id = UUID.randomUUID();
+        for (Building building : buildings.getBuildings()) {
+            if (building.getUuid() == buildingId) {
+                Actuator actuator = new Actuator(name, 20);
+                building.addActuator(actuator);
+                id = actuator.getId();
+            }
+        }
+        return id;
     }
 
     @Override
     public void removeActuator(UUID buildingId, UUID actuatorId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Building building : buildings.getBuildings()) {
+            if (building.getUuid() == buildingId) {
+                building.removeActuator(actuatorId);
+            }
+        }
     }
 
+    @Override
+    public void addBuilding(String name, String adress) {
+        buildings.addBuilding(new Building(name, adress));
+
+    }
+
+    @Override
+    public void removeBuilding(UUID buildingId) {
+        buildings.removeBuilding(buildingId);
+    }
 }
