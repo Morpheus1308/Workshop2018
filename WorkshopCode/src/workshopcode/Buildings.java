@@ -70,4 +70,12 @@ public class Buildings {
         return buildingList;
     }
     
+    public void removeBuilding(UUID id){
+        for (Building building : buildingList) {
+            if(building.getUuid() == id){
+                buildingList.remove(building);
+            }
+        }
+        
+    }
 }
