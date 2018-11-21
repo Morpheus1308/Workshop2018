@@ -7,6 +7,9 @@ package workshopcode;
 public class WorkshopCode {
 
     public static void main(String[] args) {
+        
+        //Interface
+        
 
         //Testing building 1 
         Buildings all = new Buildings();
@@ -35,7 +38,7 @@ public class WorkshopCode {
         //Further testing
         for (int i = 0; i < 3; i++) {
             //Infinite loop determines changing 
-            
+
             if (thermometer.getReadOut() > 50) {
                 if (AQS.getReadout() > 40) {
                     actuator1.setPosition(100);
@@ -47,16 +50,16 @@ public class WorkshopCode {
                 actuator1.setPosition(10);
                 actuator2.setPosition(80);
             }
-            
+
             System.out.println(actuator1.getPosition());
             System.out.println(actuator2.getPosition());
-            
-            thermometer.setValue(Math.random()*100);
+
+            thermometer.setValue(Math.random() * 100);
             System.out.println(all.printActuator(building2.getUuid()));
             System.out.println(all.printSensor(building2.getUuid()));
-            
+
             System.out.println(thermometer.getReadOut());
-            AQS.setValue(Math.random()*100);
+            AQS.setValue(Math.random() * 100);
             System.out.println(AQS.getReadout());
         }
 
